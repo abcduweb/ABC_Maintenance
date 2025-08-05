@@ -205,13 +205,12 @@ class Maintenance_Mode_FSE {
 	}
 
 	/**
-	 * Retourne l'URL d'édition FSE du template maintenance
+	 * Retourne l'URL d'édition FSE de la page maintenance
 	 */
 	public function get_fse_template_edit_url() {
-		$template_slug = 'page-' . self::TEMPLATE_SLUG;
-		$template = get_page_by_path( $template_slug, OBJECT, 'wp_template' );
-		if ( $template ) {
-			return admin_url( 'site-editor.php?postId=' . $template->ID . '&postType=wp_template' );
+		$page = get_page_by_path( self::PAGE_SLUG );
+		if ( $page ) {
+			return admin_url( 'site-editor.php?postId=' . $page->ID . '&postType=page' );
 		}
 		return false;
 	}
